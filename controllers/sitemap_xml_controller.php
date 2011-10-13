@@ -42,6 +42,13 @@ class SitemapXmlController extends PluginsController {
  */
 	var $uses = array('Plugin', 'Content');
 /**
+ * コンポーネント
+ *
+ * @var array
+ * @access public
+ */
+	var $components = array('AuthEx','Cookie','AuthConfigure');
+/**
  * [ADMIN] サイトマップXML生成実行ページ
  */
 	function admin_index() {
