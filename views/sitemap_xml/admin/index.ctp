@@ -20,16 +20,15 @@
  * @license			http://basercms.net/license/index.html
  */
 ?>
-<h2><?php $baser->contentsTitle() ?></h2>
 
 <p>検索インデックスのデータを元にサイトマップXMLを生成します。</p>
 <p>出力先のパス：<?php echo WWW_ROOT.'sitemap.xml' ?></p>
 
 <?php if($fileWritable && $dirWritable): ?>
-<?php echo $formEx->create('SitemapXml', array('action' => 'index', 'url' => array('controller' => 'sitemap_xml'))) ?>
-<?php echo $formEx->hidden('HtmlConverter.exec', array('value' => true)) ?>
-<div class="align-center">
-	<?php echo $formEx->submit('生成実行', array('div' => false, 'class' => 'btn-orange button')) ?>
+<?php echo $bcForm->create('SitemapXml', array('action' => 'index', 'url' => array('controller' => 'sitemap_xml'))) ?>
+<?php echo $bcForm->hidden('SitemapXml.exec', array('value' => true)) ?>
+<div class="submit">
+	<?php echo $bcForm->submit('生成実行', array('div' => false, 'class' => 'button')) ?>
 </div>
 <?php endif ?>
 <?php if(!$dirWritable): ?>
@@ -39,4 +38,4 @@
 	<div class="message"><?php echo WWW_ROOT.'sitemap.xml' ?> に書込権限を与えてください。</div>
 <?php endif ?>
 
-<?php echo $formEx->end() ?>
+<?php echo $bcForm->end() ?>
