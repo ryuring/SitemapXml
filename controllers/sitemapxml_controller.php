@@ -28,13 +28,13 @@ App::import('Controller', 'Plugins');
  *
  * @package	sitemap_xml.controllers
  */
-class SitemapXmlController extends PluginsController {
+class SitemapxmlController extends PluginsController {
 /**
  * コントローラー名
  * 
  * @var string
  */
-	var $name = 'SitemapXml';
+	var $name = 'Sitemapxml';
 /**
  * モデル
  * 
@@ -55,7 +55,7 @@ class SitemapXmlController extends PluginsController {
 		
 		$path = WWW_ROOT.'sitemap.xml';
 		if($this->data) {
-			$sitemap = $this->requestAction('/admin/sitemap_xml/create', array('return', $this->data));
+			$sitemap = $this->requestAction('/admin/sitemapxml/create', array('return', $this->data));
 			ClassRegistry::removeObject('View');
 			$File = new File($path);
 			$File->write($sitemap);

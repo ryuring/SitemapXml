@@ -25,8 +25,8 @@
 <p>出力先のパス：<?php echo WWW_ROOT.'sitemap.xml' ?></p>
 
 <?php if($fileWritable && $dirWritable): ?>
-<?php echo $bcForm->create('SitemapXml', array('action' => 'index', 'url' => array('controller' => 'sitemap_xml'))) ?>
-<?php echo $bcForm->hidden('SitemapXml.exec', array('value' => true)) ?>
+<?php echo $bcForm->create('Sitemapxml', array('action' => 'index', 'url' => array('controller' => 'sitemapxml'))) ?>
+<?php echo $bcForm->hidden('Sitemapxml.exec', array('value' => true)) ?>
 <div class="submit">
 	<?php echo $bcForm->submit('生成実行', array('div' => false, 'class' => 'button')) ?>
 </div>
