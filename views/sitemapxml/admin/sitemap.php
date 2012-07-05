@@ -1,25 +1,25 @@
 <?php
 /* SVN FILE: $Id$ */
 /**
- * サイトマップXMLテンプレート
+ * [Sitemapxml] サイトマップXMLビュー
  *
- * PHP versions 4 and 5
+ * PHP version 5
  *
- * BaserCMS :  Based Website Development Project <http://basercms.net>
- * Copyright 2011 - 2011, Catchup, Inc.
- *								1-19-4 ikinomatsubara, fukuoka-shi
- *								fukuoka, Japan 819-0055
+ * baserCMS :  Based Website Development Project <http://basercms.net>
+ * Copyright 2008 - 2012, baserCMS Users Community <http://sites.google.com/site/baserusers/>
  *
- * @copyright		Copyright 2011 - 2011, Catchup, Inc.
- * @link			http://basercms.net BaserCMS Project
- * @package			sitemap_xml.views
- * @since			Baser v 1.6.11
+ * @copyright		Copyright 2011 - 2012, Catchup, Inc.
+ * @link			http://www.e-catchup.jp Catchup, Inc.
+ * @package			sitemapxml.views
+ * @since			Baser v 2.0.0
  * @version			$Revision$
  * @modifiedby		$LastChangedBy$
  * @lastmodified	$Date$
- * @license			http://basercms.net/license/index.html
+ * @license			MIT lincense
  */
 ?>
+
+
 <?php echo '<?xml version="1.0" encoding="UTF-8"?>' ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <?php foreach($datas as $data): ?>

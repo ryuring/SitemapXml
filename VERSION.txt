@@ -8,7 +8,7 @@
 CHG: 変更内容 / BUG: バグフィックス / NEW: 機能追加
 
 
-[2012-07-05] basersitemapxml-2.0.0
+[2012-07-05] sitemapxml-2.0.0
 - CHG: baserCMS 2.0.2 に対応
 
 
