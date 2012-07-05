@@ -21,6 +21,6 @@ $title = 'サイトマップXMLクリエーター';
 $description = '検索インデックスデータを元にサイトマップXMLを生成します。';
 $author = 'ryuring';
 $url = 'http://www.e-catchup.jp/';
-$adminLink = '/admin/sitemapxml/';
+$adminLink = array('plugin' => 'sitemapxml', 'controller' => 'sitemapxml', 'action' => 'index');
 $installMessage = '';
 ?>
