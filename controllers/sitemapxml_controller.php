@@ -59,16 +59,21 @@ class SitemapxmlController extends PluginsController {
 			$File->write($sitemap);
 			$File->close();
 			$this->Session->setFlash('サイトマップの生成が完了しました。');
+			chmod($path, 0666);
 		}
 		
 		$dirWritable = true;
-		$fileWritable = true;
-		if(!is_writable(dirname($path))) {
-			$dirWritable = false;
+		$fileWritable = true;		
+		if(file_exists($path)) {
+			if(!is_writable($path)) {
+				$fileWritable = false;
+			}
+		} else {
+			if(!is_writable(dirname($path))) {
+				$dirWritable = false;
+			}
 		}
-		if(file_exists($path) && !is_writable($path)) {
-			$fileWritable = false;
-		}
+		
 		
 		$this->set('fileWritable', $fileWritable);
 		$this->set('dirWritable', $dirWritable);
