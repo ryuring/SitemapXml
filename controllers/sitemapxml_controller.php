@@ -6,9 +6,9 @@
  * PHP version 5
  *
  * baserCMS :  Based Website Development Project <http://basercms.net>
- * Copyright 2008 - 2012, baserCMS Users Community <http://sites.google.com/site/baserusers/>
+ * Copyright 2008 - 2013, baserCMS Users Community <http://sites.google.com/site/baserusers/>
  *
- * @copyright		Copyright 2011 - 2012, Catchup, Inc.
+ * @copyright		Copyright 2011 - 2013, Catchup, Inc.
  * @link			http://www.e-catchup.jp Catchup, Inc.
  * @package			sitemapxml.controllers
  * @since			Baser v 2.0.0
