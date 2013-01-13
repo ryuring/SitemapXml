@@ -1,7 +1,7 @@
 <?php
 /* SVN FILE: $Id$ */
 /**
- * [Sitemapxml] サイトマップXML生成
+ * [Sitemapxml] サイトマップXMLクリエーターコントローラー
  *
  * PHP version 5
  *
@@ -16,11 +16,6 @@
  * @modifiedby		$LastChangedBy$
  * @lastmodified	$Date$
  * @license			MIT lincense
- */
-/**
- * サイトマップXMLクリエーターコントローラー
- *
- * @package	sitemap_xml.controllers
  */
 class SitemapxmlController extends BaserPluginAppController {
 /**
@@ -63,6 +58,9 @@ class SitemapxmlController extends BaserPluginAppController {
 	);
 /**
  * [ADMIN] サイトマップXML生成実行ページ
+ * 
+ * @return void
+ * @access public
  */
 	function admin_index() {
 
@@ -100,6 +98,9 @@ class SitemapxmlController extends BaserPluginAppController {
 	}
 /**
  * [ADMIN] サイトマップXML生成処理
+ * 
+ * @return void
+ * @access public
  */
 	function admin_create() {
 		
@@ -112,6 +113,8 @@ class SitemapxmlController extends BaserPluginAppController {
 /**
  * [ADMIN] サイトマップXMLファイル名設定
  * 
+ * @return void
+ * @access public
  */
 	function admin_edit() {
 

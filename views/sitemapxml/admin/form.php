@@ -1,7 +1,7 @@
 <?php
 /* SVN FILE: $Id$ */
 /**
- * [Sitemapxml] サイトマップXMLビュー
+ * [Sitemapxml] サイトマップXMLファイル名設定
  *
  * PHP version 5
  *
