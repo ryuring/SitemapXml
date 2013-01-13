@@ -18,40 +18,57 @@
  * @license			MIT lincense
  */
 /**
- * Include files
- */
-App::import('Controller', 'Plugins');
-/**
  * サイトマップXMLクリエーターコントローラー
  *
  * @package	sitemap_xml.controllers
  */
-class SitemapxmlController extends PluginsController {
+class SitemapxmlController extends BaserPluginAppController {
 /**
  * コントローラー名
  * 
  * @var string
+ * @access public
  */
 	var $name = 'Sitemapxml';
 /**
  * モデル
  * 
  * @var array
+ * @access public
  */
-	var $uses = array('Plugin', 'Content');
+	var $uses = array('Sitemapxml.Sitemapxml', 'Content');
 /**
  * コンポーネント
  *
  * @var array
  * @access public
  */
-	var $components = array('BcAuth','Cookie','BcAuthConfigure');
+	var $components = array('BcAuth', 'Cookie', 'BcAuthConfigure');
+/**
+ * サブメニューエレメント
+ *
+ * @var array
+ * @access public
+ */
+	var $subMenuElements = array('sitemapxml');
+/**
+ * ぱんくずナビ
+ *
+ * @var string
+ * @access public
+ */
+	var $crumbs = array(
+		array('name' => 'プラグイン管理', 'url' => array('plugin' => '', 'controller' => 'plugins', 'action' => 'index')),
+		array('name' => 'サイトマップXML管理', 'url' => array('plugin' => 'sitemapxml', 'controller' => 'sitemapxml', 'action' => 'index'))
+	);
 /**
  * [ADMIN] サイトマップXML生成実行ページ
  */
 	function admin_index() {
-		
-		$path = WWW_ROOT.'sitemap.xml';
+
+		$datas = array('Sitemapxml' => $this->Sitemapxml->findExpanded());
+		$fileName = $datas['Sitemapxml']['name'] . '.xml';
+		$path = WWW_ROOT . $fileName;
 		if($this->data) {
 			$sitemap = $this->requestAction('/admin/sitemapxml/create', array('return', $this->data));
 			ClassRegistry::removeObject('View');
@@ -73,8 +90,8 @@ class SitemapxmlController extends PluginsController {
 				$dirWritable = false;
 			}
 		}
-		
-		
+
+		$this->set('fileName', $fileName);
 		$this->set('fileWritable', $fileWritable);
 		$this->set('dirWritable', $dirWritable);
 		$this->pageTitle = 'サイトマップXML作成';
@@ -92,5 +109,31 @@ class SitemapxmlController extends PluginsController {
 		$this->render('sitemap');
 
 	}
-	
+/**
+ * [ADMIN] サイトマップXMLファイル名設定
+ * 
+ */
+	function admin_edit() {
+
+		if(empty($this->data)) {
+			$this->data = array('Sitemapxml' => $this->Sitemapxml->findExpanded());
+		} else {
+			$this->Sitemapxml->set($this->data);
+			if($this->Sitemapxml->validates()) {
+				if($this->Sitemapxml->saveKeyValue($this->data)) {
+					$this->Session->setFlash('出力ファイル名を保存しました。');
+					$this->redirect(array('action' => 'index'));
+				} else {
+					$this->Session->setFlash('設定の保存に失敗しました。');
+				}
+			} else {
+				$this->Session->setFlash('入力エラーです。内容を修正して下さい。');
+			}
+		}
+
+		$this->pageTitle = '出力ファイル名設定';
+		$this->render('form');
+
+	}
+
 }

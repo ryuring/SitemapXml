@@ -20,7 +20,7 @@
 ?>
 
 <p>検索インデックスのデータを元にサイトマップXMLを生成します。</p>
-<p>出力先のパス：<?php echo WWW_ROOT.'sitemap.xml' ?></p>
+<p>出力先のパス：<?php echo WWW_ROOT . $fileName ?></p>
 
 <?php if($fileWritable && $dirWritable): ?>
 <?php echo $bcForm->create('Sitemapxml', array('action' => 'index', 'url' => array('controller' => 'sitemapxml'))) ?>
@@ -33,7 +33,7 @@
 	<div class="message"><?php echo WWW_ROOT ?> に書込権限を与えてください。</div>
 <?php endif ?>
 <?php if(!$fileWritable): ?>
-	<div class="message"><?php echo WWW_ROOT.'sitemap.xml' ?> に書込権限を与えてください。</div>
+	<div class="message"><?php echo WWW_ROOT . $fileName ?> に書込権限を与えてください。</div>
 <?php endif ?>
 
 <?php echo $bcForm->end() ?>
