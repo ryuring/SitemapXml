@@ -31,6 +31,7 @@ $(window).load(function() {
 		<td class="col-input">
 			<?php echo $bcForm->input('Sitemapxml.name', array('type' => 'text', 'size' => 40, 'maxlength' => 255, 'counter' => true)) ?>
 			<?php echo $bcForm->error('Sitemapxml.name') ?>
+			<br />拡張子は「.xml」です。
 		</td>
 	</tr>
 </table>

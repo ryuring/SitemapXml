@@ -18,9 +18,15 @@
  * @license			MIT lincense
  */
 ?>
-
-<p>検索インデックスのデータを元にサイトマップXMLを生成します。</p>
-<p>出力先のパス：<?php echo WWW_ROOT . $fileName ?></p>
+<table cellpadding="0" cellspacing="0" class="form-table section">
+	<tr>
+		<th class="col-head">出力先のパス</th>
+		<td class="col-input">
+			<p>検索インデックスのデータを元にサイトマップXMLを生成します。</p>
+			<?php echo WWW_ROOT . $fileName ?>
+		</td>
+	</tr>
+</table>
 
 <?php if($fileWritable && $dirWritable): ?>
 <?php echo $bcForm->create('Sitemapxml', array('action' => 'index', 'url' => array('controller' => 'sitemapxml'))) ?>
