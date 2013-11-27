@@ -27,10 +27,16 @@
 	$changefreq = 'weekly';
 } else {
 	$changefreq = 'monthly';
-}?>
+}
+if(!empty($data['Content']['modified'])) {
+	$modified = $data['Content']['modified'];
+} else {
+	$modified = $data['Content']['created'];
+}
+?>
    <url>
       <loc><?php echo Router::url($data['Content']['url'], true) ?></loc>
-      <lastmod><?php echo date('Y-m-d', strtotime($data['Content']['modified'])) ?></lastmod>
+      <lastmod><?php echo date('Y-m-d', strtotime($modified)) ?></lastmod>
       <changefreq><?php echo $changefreq ?></changefreq>
       <priority><?php echo $data['Content']['priority'] ?></priority>
    </url>

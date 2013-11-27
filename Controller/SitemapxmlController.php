@@ -26,34 +26,34 @@ App::import('Controller', 'Plugins');
  *
  * @package	sitemap_xml.controllers
  */
-class SitemapxmlController extends PluginsController {
+class SitemapxmlController extends BcPluginAppController {
 /**
  * コントローラー名
  * 
  * @var string
  */
-	var $name = 'Sitemapxml';
+	public $name = 'Sitemapxml';
 /**
  * モデル
  * 
  * @var array
  */
-	var $uses = array('Plugin', 'Content');
+	public $uses = array('Plugin', 'Content');
 /**
  * コンポーネント
  *
  * @var array
  * @access public
  */
-	var $components = array('BcAuth','Cookie','BcAuthConfigure');
+	public $components = array('BcAuth','Cookie','BcAuthConfigure');
 /**
  * [ADMIN] サイトマップXML生成実行ページ
  */
-	function admin_index() {
+	public function admin_index() {
 		
-		$path = WWW_ROOT.'sitemap.xml';
-		if($this->data) {
-			$sitemap = $this->requestAction('/admin/sitemapxml/create', array('return', $this->data));
+		$path = WWW_ROOT . Configure::read('Sitemapxml.filename');
+		if($this->request->data) {
+			$sitemap = $this->requestAction('/admin/sitemapxml/sitemapxml/create', array('return', $this->request->data));
 			ClassRegistry::removeObject('View');
 			$File = new File($path);
 			$File->write($sitemap);
@@ -74,7 +74,7 @@ class SitemapxmlController extends PluginsController {
 			}
 		}
 		
-		
+		$this->set('path', $path);
 		$this->set('fileWritable', $fileWritable);
 		$this->set('dirWritable', $dirWritable);
 		$this->pageTitle = 'サイトマップXML作成';
@@ -84,7 +84,7 @@ class SitemapxmlController extends PluginsController {
 /**
  * [ADMIN] サイトマップXML生成処理
  */
-	function admin_create() {
+	public function admin_create() {
 		
 		$this->layout = '../empty';
 		$datas = $this->Content->find('all', array('conditions' => array('Content.status' => true)));		
