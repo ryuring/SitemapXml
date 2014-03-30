@@ -1,0 +1,6 @@
+IpLimitter : baserCMS Plugin
+Copyright 2014, ryuring <http://www.e-catchup.jp/>
+
+About License
+Licensed under the MIT License
+http://opensource.org/licenses/mit-license.php

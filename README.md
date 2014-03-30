@@ -1,7 +1,7 @@
 Sitemapxml
 ==========
 baserCMS Plugin  
-Copyright 2011 - 2012, Catchup, Inc. <http://www.e-catchup.jp>
+Copyright 2011 - 2017, ryuring <http://www.e-catchup.jp>
 
 License
 -------
