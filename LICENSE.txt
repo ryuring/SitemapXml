@@ -1,4 +1,4 @@
-IpLimitter : baserCMS Plugin
+Sitemapxml : baserCMS Plugin
 Copyright 2014, ryuring <http://www.e-catchup.jp/>
 
 About License
