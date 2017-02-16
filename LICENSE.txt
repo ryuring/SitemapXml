@@ -1,5 +1,5 @@
 Sitemapxml : baserCMS Plugin
-Copyright 2014, ryuring <http://www.e-catchup.jp/>
+Copyright 2014 - 2017, ryuring <http://ryuring.com/>
 
 About License
 Licensed under the MIT License

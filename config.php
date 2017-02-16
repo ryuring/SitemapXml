@@ -23,4 +23,3 @@ $author = 'ryuring';
 $url = 'http://ryuring.com/';
 $adminLink = array('plugin' => 'sitemapxml', 'controller' => 'sitemapxml', 'action' => 'index');
 $installMessage = '';
-?>
