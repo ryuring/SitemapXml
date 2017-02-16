@@ -21,24 +21,24 @@
 <?php echo '<?xml version="1.0" encoding="UTF-8"?>' ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <?php foreach($datas as $data): ?>
-<?php if($data['Content']['priority'] == '1.0') {
+<?php if($data['SearchIndex']['priority'] == '1.0') {
 	$changefreq = 'daily';
-} elseif ($data['Content']['priority'] > '0.5') {
+} elseif ($data['SearchIndex']['priority'] > '0.5') {
 	$changefreq = 'weekly';
 } else {
 	$changefreq = 'monthly';
 }
-if(!empty($data['Content']['modified'])) {
-	$modified = $data['Content']['modified'];
+if(!empty($data['SearchIndex']['modified'])) {
+	$modified = $data['SearchIndex']['modified'];
 } else {
-	$modified = $data['Content']['created'];
+	$modified = $data['SearchIndex']['created'];
 }
 ?>
    <url>
-      <loc><?php echo Router::url($data['Content']['url'], true) ?></loc>
+      <loc><?php echo Router::url($data['SearchIndex']['url'], true) ?></loc>
       <lastmod><?php echo date('Y-m-d', strtotime($modified)) ?></lastmod>
       <changefreq><?php echo $changefreq ?></changefreq>
-      <priority><?php echo $data['Content']['priority'] ?></priority>
+      <priority><?php echo $data['SearchIndex']['priority'] ?></priority>
    </url>
 <?php endforeach ?>
 </urlset>

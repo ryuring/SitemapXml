@@ -17,16 +17,13 @@
  * @lastmodified	$Date$
  * @license			MIT lincense
  */
-/**
- * Include files
- */
-App::import('Controller', 'Plugins');
+
 /**
  * サイトマップXMLクリエーターコントローラー
  *
  * @package	sitemap_xml.controllers
  */
-class SitemapxmlController extends BcPluginAppController {
+class SitemapxmlController extends AppController {
 /**
  * コントローラー名
  * 
@@ -38,7 +35,7 @@ class SitemapxmlController extends BcPluginAppController {
  * 
  * @var array
  */
-	public $uses = array('Plugin', 'Content');
+	public $uses = array('SearchIndex');
 /**
  * コンポーネント
  *
@@ -87,7 +84,7 @@ class SitemapxmlController extends BcPluginAppController {
 	public function admin_create() {
 		
 		$this->layout = '../empty';
-		$datas = $this->Content->find('all', array('conditions' => array('Content.status' => true)));		
+		$datas = $this->SearchIndex->find('all', array('conditions' => array('SearchIndex.status' => true)));
 		$this->set('datas', $datas);
 		$this->render('sitemap');
 
