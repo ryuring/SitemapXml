@@ -43,6 +43,15 @@ class SitemapxmlController extends AppController {
  * @access public
  */
 	public $components = array('BcAuth','Cookie','BcAuthConfigure');
+
+/**
+ * Before Filter
+ */
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->BcAuth->allow('create');
+	}
+
 /**
  * [ADMIN] サイトマップXML生成実行ページ
  */
@@ -50,7 +59,7 @@ class SitemapxmlController extends AppController {
 		
 		$path = WWW_ROOT . Configure::read('Sitemapxml.filename');
 		if($this->request->data) {
-			$sitemap = $this->requestAction('/admin/sitemapxml/sitemapxml/create', array('return', $this->request->data));
+			$sitemap = $this->requestAction('/sitemapxml/sitemapxml/create', array('return', $this->request->data));
 			ClassRegistry::removeObject('View');
 			$File = new File($path);
 			$File->write($sitemap);
@@ -81,13 +90,11 @@ class SitemapxmlController extends AppController {
 /**
  * [ADMIN] サイトマップXML生成処理
  */
-	public function admin_create() {
-		
-		$this->layout = '../empty';
+	public function create() {
+		$this->layout = 'empty';
 		$datas = $this->SearchIndex->find('all', array('conditions' => array('SearchIndex.status' => true)));
 		$this->set('datas', $datas);
 		$this->render('sitemap');
-
 	}
 	
 }
