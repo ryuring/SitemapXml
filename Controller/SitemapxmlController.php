@@ -1,48 +1,38 @@
 <?php
-/* SVN FILE: $Id$ */
 /**
- * [Sitemapxml] サイトマップXML生成
+ * Sitemapxml :  Google Sitemap Creator <https://github.com/ryuring/sitemapxml>
+ * Copyright (c) ryuring <http://ryuring.com/>
  *
- * PHP version 5
- *
- * baserCMS :  Based Website Development Project <http://basercms.net>
- * Copyright 2008 - 2012, baserCMS Users Community <http://sites.google.com/site/baserusers/>
- *
- * @copyright		Copyright 2011 - 2012, Catchup, Inc.
- * @link			http://www.e-catchup.jp Catchup, Inc.
- * @package			sitemapxml.controllers
- * @since			Baser v 2.0.0
- * @version			$Revision$
- * @modifiedby		$LastChangedBy$
- * @lastmodified	$Date$
- * @license			MIT lincense
+ * @package			Sitemapxml.Controller
+ * @since			Sitemapxml v 0.1.0
  */
 
 /**
  * サイトマップXMLクリエーターコントローラー
- *
- * @package	sitemap_xml.controllers
  */
 class SitemapxmlController extends AppController {
+
 /**
  * コントローラー名
  * 
  * @var string
  */
 	public $name = 'Sitemapxml';
+
 /**
  * モデル
  * 
  * @var array
  */
-	public $uses = array('SearchIndex');
+	public $uses = ['SearchIndex'];
+
 /**
  * コンポーネント
  *
  * @var array
  * @access public
  */
-	public $components = array('BcAuth','Cookie','BcAuthConfigure');
+	public $components = ['BcAuth','Cookie','BcAuthConfigure'];
 
 /**
  * Before Filter
@@ -59,7 +49,7 @@ class SitemapxmlController extends AppController {
 		
 		$path = WWW_ROOT . Configure::read('Sitemapxml.filename');
 		if($this->request->data) {
-			$sitemap = $this->requestAction('/sitemapxml/sitemapxml/create', array('return', $this->request->data));
+			$sitemap = $this->requestAction('/sitemapxml/sitemapxml/create', ['return', $this->request->data]);
 			ClassRegistry::removeObject('View');
 			$File = new File($path);
 			$File->write($sitemap);
@@ -92,7 +82,7 @@ class SitemapxmlController extends AppController {
  */
 	public function create() {
 		$this->layout = 'empty';
-		$datas = $this->SearchIndex->find('all', array('conditions' => array('SearchIndex.status' => true)));
+		$datas = $this->SearchIndex->find('all', ['conditions' => ['SearchIndex.status' => true]]);
 		$this->set('datas', $datas);
 		$this->render('sitemap');
 	}
