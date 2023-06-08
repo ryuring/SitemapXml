@@ -1,14 +1,7 @@
 <?php
 /**
- * Sitemapxml :  Google Sitemap Creator <https://github.com/ryuring/sitemapxml>
- * Copyright (c) ryuring <http://ryuring.com/>
- *
- * @package			Sitemapxml.View
- * @since			Sitemapxml v 0.1.0
- */
-
-/**
- * @var BcAppView $this
+ * SitemapXml : Google Sitemap Creator <https://github.com/ryuring/SitemapXml>
+ * Copyright (c) ryuring <https://ryuring.com/>
  */
 ?>
 <?php echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n" ?>

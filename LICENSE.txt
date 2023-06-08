@@ -1,5 +1,5 @@
-Sitemapxml : baserCMS Plugin
-Copyright 2014 - 2017, ryuring <http://ryuring.com/>
+SitemapXml : baserCMS Plugin
+Copyright ryuring <https://ryuring.com/>
 
 About License
 Licensed under the MIT License

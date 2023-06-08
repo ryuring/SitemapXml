@@ -1,10 +1,9 @@
-Sitemapxml
+SitemapXml
 ==========
 baserCMS Plugin  
-Copyright 2011 - 2017, ryuring <http://ryuring.com>
+Copyright ryuring <https://ryuring.com>
 
 License
 -------
-
 Lincensed under the MIT lincense since version 2.0
 
