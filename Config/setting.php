@@ -4,6 +4,9 @@
  * Copyright (c) ryuring <https://ryuring.com/>
  */
 
-$config = array('Sitemapxml' => array(
-	'filename'	=> 'sitemap.xml'
-));
+return [
+    'SitemapXml' => [
+        // 出力ファイル名
+        'filename' => 'sitemap.xml'
+    ]
+];

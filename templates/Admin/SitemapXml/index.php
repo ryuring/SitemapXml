@@ -3,24 +3,36 @@
  * SitemapXml : Google Sitemap Creator <https://github.com/ryuring/SitemapXml>
  * Copyright (c) ryuring <https://ryuring.com/>
  */
+
+/**
+ * @var \BaserCore\View\BcAdminAppView $this
+ * @var string $path
+ * @var bool $fileWritable
+ * @var bool $dirWritable
+ */
+$this->BcAdmin->setTitle('サイトマップXML作成');
 ?>
 
 <p>検索インデックスのデータを元にサイトマップXMLを生成します。</p>
 <p>出力先のパス：<?php echo $path ?></p>
-<p>※ ファイル名は、/Config/setting.php で変更できます。</p>
+<p>※ ファイル名は、/config/setting.php で変更できます。</p>
 
-<?php if($fileWritable && $dirWritable): ?>
-<?php echo $this->BcForm->create('Sitemapxml', array('url' => array('controller' => 'sitemapxml', 'action' => 'index'))) ?>
-<?php echo $this->BcForm->hidden('Sitemapxml.exec', array('value' => true)) ?>
-<div class="submit">
-	<?php echo $this->BcForm->submit('生成実行', array('div' => false, 'class' => 'button')) ?>
-</div>
-<?php endif ?>
-<?php if(!$dirWritable): ?>
-	<div class="message"><?php echo WWW_ROOT ?> に書込権限を与えてください。</div>
-<?php endif ?>
-<?php if(!$fileWritable): ?>
-	<div class="message"><?php echo WWW_ROOT.'sitemap.xml' ?> に書込権限を与えてください。</div>
+<?php if ($fileWritable && $dirWritable): ?>
+  <?php echo $this->BcForm->create() ?>
+  <?php echo $this->BcForm->hidden('exec', ['value' => true]) ?>
+  <div class="submit section bca-actions">
+    <div class="bca-actions__main">
+      <?= $this->BcAdminForm->button(
+        __d('baser_core', '生成実行'),
+        ['div' => false,
+          'class' => 'bca-loading bca-btn bca-actions__item',
+          'data-bca-btn-type' => 'save',
+          'data-bca-btn-size' => 'lg',
+          'data-bca-btn-width' => 'lg',
+          'id' => 'BtnSave']
+      ) ?>
+    </div>
+  </div>
 <?php endif ?>
 
 <?php echo $this->BcForm->end() ?>

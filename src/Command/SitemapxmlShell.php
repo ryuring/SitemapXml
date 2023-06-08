@@ -12,9 +12,7 @@ use Configure;
 use Controller;
 use File;
 
-App::uses('Controller', 'Controller');
-
-class SitemapxmlShell extends AppShell
+class SitemapXmlCommand extends AppShell
 {
 
 	/**

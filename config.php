@@ -3,9 +3,11 @@
  * SitemapXml : Google Sitemap Creator <https://github.com/ryuring/SitemapXml>
  * Copyright (c) ryuring <https://ryuring.com/>
  */
-$title = 'サイトマップXMLクリエーター';
-$description = '検索インデックスデータを元にサイトマップXMLを生成します。';
-$author = 'ryuring';
-$url = 'http://ryuring.com/';
-$adminLink = array('plugin' => 'sitemapxml', 'controller' => 'sitemapxml', 'action' => 'index');
-$installMessage = '';
+return [
+    'type' => 'Plugin',
+    'title' => 'サイトマップXMLクリエーター',
+    'description' => '検索インデックスデータを元にサイトマップXMLを生成します。',
+    'author' => 'ryuring',
+    'url' => 'https://ryuring.com/',
+    'adminLink' => ['plugin' => 'SitemapXml', 'controller' => 'SitemapXml', 'action' => 'index']
+];
