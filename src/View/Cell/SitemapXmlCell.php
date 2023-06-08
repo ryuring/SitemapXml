@@ -15,13 +15,19 @@ use Cake\View\Cell;
 class SitemapXmlCell extends Cell
 {
 
-    public function display()
+    public function display($site)
     {
         $searchIndexes = $this->fetchTable('BcSearchIndex.SearchIndexes');
-		$searchIndexes = $searchIndexes->find()->where(['SearchIndexes.status' => true])->all();
-		$this->set('searchIndexes', $searchIndexes);
+		$searchIndexes = $searchIndexes->find()->where([
+		    'SearchIndexes.status' => true,
+		    'SearchIndexes.site_id' => $site->id
+        ])->all();
+		$this->set([
+		    'site' => $site,
+		    'searchIndexes' => $searchIndexes
+        ]);
         $this->viewBuilder()->setLayout('empty');
-        $this->viewBuilder()->setHelpers(['SitemapXml.SitemapXml']);
+        $this->viewBuilder()->addHelpers(['SitemapXml.SitemapXml']);
     }
 
 }

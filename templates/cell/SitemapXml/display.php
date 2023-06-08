@@ -6,13 +6,14 @@
 /**
  * @var \BaserCore\View\BcFrontAppView $this
  * @var \Cake\Datasource\ResultSetInterface $searchIndexes
+ * @var \BaserCore\Model\Entity\Site $site
  */
 ?>
 <?php echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 <?php foreach($searchIndexes as $searchIndex): ?>
    <url>
-      <loc><?php echo $this->SitemapXml->getLoc($searchIndex) ?></loc>
+      <loc><?php echo $this->SitemapXml->getLoc($site, $searchIndex) ?></loc>
       <lastmod><?php echo $this->SitemapXml->getLastMod($searchIndex) ?></lastmod>
       <changefreq><?php echo $this->SitemapXml->getChangeFreq($searchIndex) ?></changefreq>
       <priority><?php echo $searchIndex->priority ?></priority>

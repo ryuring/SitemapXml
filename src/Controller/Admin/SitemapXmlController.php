@@ -30,26 +30,36 @@ class SitemapXmlController extends BcAdminAppController
 	 */
 	public function index()
 	{
-		$path = WWW_ROOT . Configure::read('SitemapXml.filename');
+		$filename = Configure::read('SitemapXml.filename');
 		if ($this->getRequest()->is('post')) {
-		    $sitemap = $this->cell('SitemapXml.SitemapXml');
-			$File = new File($path);
-			$File->write($sitemap);
-			$File->close();
-			$this->BcMessage->setInfo('サイトマップの生成が完了しました。');
-			chmod($path, 0666);
+		    $sitesTable = $this->fetchTable('BaserCore.Sites');
+		    $sites = $sitesTable->find()->where(['Sites.status' => true]);
+		    $result = true;
+		    foreach($sites as $site) {
+                $path = WWW_ROOT . basename($filename, '.xml') . (($site->name)? '_' . $site->name : '') . '.xml';
+                if (file_exists($path) && !is_writable($path)) {
+                    $this->BcMessage->setWarning($path . ' に書込権限を与えてください。');
+                    $result = false;
+                    break;
+                }
+                $sitemap = $this->cell('SitemapXml.SitemapXml', [$site]);
+                $File = new File($path);
+                $File->write($sitemap);
+                $File->close();
+                chmod($path, 0666);
+		    }
+		    if($result) {
+                $this->BcMessage->setInfo('サイトマップの生成が完了しました。');
+            }
 		}
 
 		$dirWritable = true;
-		$fileWritable = true;
-		if (file_exists($path)) {
-			if (!is_writable($path)) $this->BcMessage->setWarning(WWW_ROOT . ' に書込権限を与えてください。');
-		} else {
-			if (!is_writable(dirname($path))) $this->BcMessage->setWarning(WWW_ROOT . 'sitemap.xml に書込権限を与えてください。');
-		}
+		if (!is_writable(WWW_ROOT)) {
+            $this->BcMessage->setWarning(WWW_ROOT . ' に書込権限を与えてください。');
+            $dirWritable = false;
+        }
         $this->set([
-            'path' => $path,
-            'fileWritable' => $fileWritable,
+            'path' => WWW_ROOT . $filename,
             'dirWritable' => $dirWritable
         ]);
 	}

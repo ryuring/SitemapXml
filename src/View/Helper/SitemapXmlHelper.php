@@ -6,6 +6,7 @@
 
 namespace SitemapXml\View\Helper;
 
+use BaserCore\Model\Entity\Site;
 use BaserCore\Model\Table\SitesTable;
 use BaserCore\View\Helper\BcContentsHelper;
 use BcSearchIndex\Model\Entity\SearchIndex;
@@ -58,16 +59,9 @@ class SitemapXmlHelper extends Helper
      * @param SearchIndex $searchIndex
      * @return mixed
      */
-    public function getLoc(SearchIndex $searchIndex)
+    public function getLoc(Site $site, SearchIndex $searchIndex)
     {
-        $useSubDomain = false;
-        try {
-            /** @var SitesTable $sitesTable */
-            $sitesTable = TableRegistry::getTableLocator()->get('BaserCore.Sites');
-            $site = $sitesTable->get($searchIndex->site_id);
-            if($site) $useSubDomain = $site->use_subdomain;
-        } catch (\Throwable $e) {
-        }
-        return $this->BcContents->getUrl($searchIndex->url, true, $useSubDomain);
+        return $this->BcContents->getUrl($searchIndex->url, true, $site->use_subdomain);
     }
+
 }
